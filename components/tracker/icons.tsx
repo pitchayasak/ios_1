@@ -38,56 +38,103 @@ export function PillIcon({ color = '#F4B740', size = 36 }) {
 // ─── Exercise icon glyph ──────────────────────────────────────
 export function ExerciseIconGlyph({ kind, color, size = 22 }: { kind: ExerciseIcon; color: string; size?: number }) {
   const s = size;
+
+  // Bicycle — two wheels, clean frame
   if (kind === 'bicycle') {
     return (
       <Svg width={s} height={s} viewBox="0 0 24 24" fill="none">
-        <Circle cx="5.5" cy="17" r="3.3" stroke={color} strokeWidth="1.8" />
-        <Circle cx="18.5" cy="17" r="3.3" stroke={color} strokeWidth="1.8" />
-        <Circle cx="16" cy="4.5" r="1.5" fill={color} />
-        <Path d="M5.5 17l4-6 4 2 3-4.5 2 4.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        <Path d="M13 6.5h3" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+        <Circle cx="5.5"  cy="16.5" r="3.8" stroke={color} strokeWidth="1.8" />
+        <Circle cx="18.5" cy="16.5" r="3.8" stroke={color} strokeWidth="1.8" />
+        {/* Frame: seat-stay → bottom bracket → chain-stay */}
+        <Path d="M5.5 16.5 L10 8.5 L18.5 16.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Top tube */}
+        <Path d="M10 8.5 L14 8.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+        {/* Fork + head tube */}
+        <Path d="M14 8.5 L18.5 16.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+        {/* Seat post + saddle */}
+        <Path d="M10 8.5 L10 5.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+        <Path d="M8 5.5 L12 5.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+        {/* Handlebar */}
+        <Path d="M15.5 8 L16.5 5.5 L19 5.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Crank */}
+        <Circle cx="12" cy="16.5" r="1.2" fill={color} />
       </Svg>
     );
   }
-  if (kind === 'sport') {
+
+  // Play — tennis racket + ball
+  if (kind === 'play') {
     return (
       <Svg width={s} height={s} viewBox="0 0 24 24" fill="none">
-        <Circle cx="9" cy="4.5" r="2" fill={color} />
-        <Path d="M9 7l-1.5 5 3 1 0.5 3" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <Path d="M10.5 12l5-2 4-1" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-        <Path d="M19.5 9l2.2-0.5" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
-        <Path d="M11 15.5l-1.5 5" stroke={color} strokeWidth="2" strokeLinecap="round" />
-        <Path d="M9.5 20.5h3.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
-        <Path d="M8 10.5l-3 2" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+        {/* Racket head (circle frame) */}
+        <Circle cx="10" cy="9" r="6.5" stroke={color} strokeWidth="1.8" />
+        {/* String grid — horizontal (clipped to circle, coords computed) */}
+        <Path d="M3.85 7  L16.15 7"  stroke={color} strokeWidth="0.85" strokeLinecap="round" opacity="0.6" />
+        <Path d="M3.5  9  L16.5  9"  stroke={color} strokeWidth="0.85" strokeLinecap="round" opacity="0.6" />
+        <Path d="M3.85 11 L16.15 11" stroke={color} strokeWidth="0.85" strokeLinecap="round" opacity="0.6" />
+        {/* String grid — vertical */}
+        <Path d="M7.5  3  L7.5  15"  stroke={color} strokeWidth="0.85" strokeLinecap="round" opacity="0.6" />
+        <Path d="M10   2.5 L10  15.5" stroke={color} strokeWidth="0.85" strokeLinecap="round" opacity="0.6" />
+        <Path d="M12.5 3  L12.5 15"  stroke={color} strokeWidth="0.85" strokeLinecap="round" opacity="0.6" />
+        {/* Throat */}
+        <Path d="M8.5 15.5 L8.5 17 L11.5 17 L11.5 15.5" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Handle */}
+        <Path d="M10 17 L10 22" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+        {/* Ball */}
+        <Circle cx="19" cy="6" r="2.4" stroke={color} strokeWidth="1.6" />
+        {/* Ball seam */}
+        <Path d="M17.2 4.5 Q19 6 17.2 7.5" stroke={color} strokeWidth="0.9" strokeLinecap="round" opacity="0.6" />
       </Svg>
     );
   }
+
+  // Drive — sports car side profile
   if (kind === 'drive') {
     return (
       <Svg width={s} height={s} viewBox="0 0 24 24" fill="none">
-        <Path d="M1.5 15.5h2l2-3h4.5l1.8-2.5a2 2 0 011.6-0.8h3a2.5 2.5 0 012.2 1.3l1.6 2.9a1.5 1.5 0 01-1.3 2.2h-1.1"
-          stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill={color} fillOpacity="0.12" />
-        <Path d="M18.5 10l3-0.3M21 9.7v2" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
-        <Path d="M11.5 10.5l1.3-1.3" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
-        <Circle cx="7" cy="16" r="2.3" stroke={color} strokeWidth="1.8" fill="black" />
-        <Circle cx="7" cy="16" r="0.7" fill={color} />
-        <Circle cx="17.5" cy="16" r="2.3" stroke={color} strokeWidth="1.8" fill="black" />
-        <Circle cx="17.5" cy="16" r="0.7" fill={color} />
-        <Path d="M0.8 12.5h2M0.5 14h1.6" stroke={color} strokeWidth="1.4" strokeLinecap="round" opacity="0.7" />
+        {/* Body silhouette */}
+        <Path
+          d="M1.5 15.5 L3.5 13 L7.5 11.5 L10.5 8.5 L15 7.5 L18 8.5 L20.5 11 L22 13.5 L22 15.5 Z"
+          stroke={color} strokeWidth="1.7" strokeLinejoin="round"
+          fill={color} fillOpacity="0.12"
+        />
+        {/* Windshield + window */}
+        <Path
+          d="M10.5 8.5 L12 7.7 L16 7.7 L18 9.5 L13.5 10.2 Z"
+          stroke={color} strokeWidth="1.1" strokeLinejoin="round"
+          fill={color} fillOpacity="0.3"
+        />
+        {/* Front wheel */}
+        <Circle cx="6.5"  cy="16.5" r="2.8" stroke={color} strokeWidth="1.7" fill="black" />
+        <Circle cx="6.5"  cy="16.5" r="1"   fill={color} />
+        {/* Rear wheel */}
+        <Circle cx="18.5" cy="16.5" r="2.8" stroke={color} strokeWidth="1.7" fill="black" />
+        <Circle cx="18.5" cy="16.5" r="1"   fill={color} />
+        {/* Ground shadow line */}
+        <Path d="M3 19.5 L22 19.5" stroke={color} strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+        {/* Speed lines */}
+        <Path d="M0.5 12.5 L2 12.5M0.5 14.5 L1.5 14.5" stroke={color} strokeWidth="1.3" strokeLinecap="round" opacity="0.5" />
       </Svg>
     );
   }
-  // run (default)
+
+  // Run (default) — clean running figure
   return (
     <Svg width={s} height={s} viewBox="0 0 24 24" fill="none">
-      <Circle cx="16" cy="4" r="2" fill={color} />
-      <Path d="M16 6.5l-2.5 5" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
-      <Path d="M14.5 8l3.5 2.5 2-1.5" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <Path d="M14.8 9.5l-3 1 0.5 2.5" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <Path d="M13.5 11.5l-1 4 3.5 2" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-      <Path d="M13 12l-4 4" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
-      <Path d="M9 16l-2.5 0.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
-      <Path d="M4 7h2.5M3 10h2" stroke={color} strokeWidth="1.4" strokeLinecap="round" opacity="0.6" />
+      {/* Head */}
+      <Circle cx="15.5" cy="4" r="1.9" fill={color} />
+      {/* Body leaning forward */}
+      <Path d="M15 6 L13 12" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+      {/* Front arm pumping back */}
+      <Path d="M14.5 8.5 L18 7" stroke={color} strokeWidth="1.9" strokeLinecap="round" />
+      {/* Back arm driving forward */}
+      <Path d="M13.5 9.5 L10 11" stroke={color} strokeWidth="1.9" strokeLinecap="round" />
+      {/* Front leg — stride forward */}
+      <Path d="M13 12 L16.5 17 L18.5 21" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Back leg — trailing */}
+      <Path d="M13 12 L10.5 15.5 L8 17.5" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Motion lines */}
+      <Path d="M5 9 L2 9M5.5 12 L3 12" stroke={color} strokeWidth="1.3" strokeLinecap="round" opacity="0.5" />
     </Svg>
   );
 }

@@ -11,8 +11,8 @@ import {
 import { PillIcon, RunIcon, MoneyIcon, Checkmark } from '@/components/tracker/icons';
 
 // ─── Shared task card components (also used by monthly.tsx) ──
-export function GlowToggle({ label, active, onPress, color, icon }: {
-  label: string; active: boolean; onPress: () => void; color: string; icon: string;
+export function GlowToggle({ label, active, onPress, color, icon, svgIcon }: {
+  label?: string; active: boolean; onPress: () => void; color: string; icon?: string; svgIcon?: React.ReactNode;
 }) {
   return (
     <TouchableOpacity onPress={onPress} style={[
@@ -21,8 +21,11 @@ export function GlowToggle({ label, active, onPress, color, icon }: {
         ? { backgroundColor: color + '1A', borderColor: color + 'AA', shadowColor: color, shadowOpacity: 0.4, shadowRadius: 14, shadowOffset: { width: 0, height: 0 }, elevation: 4 }
         : { borderColor: T.cardBorder },
     ]}>
-      <Text style={[styles.glowIcon, !active && { opacity: 0.45 }]}>{icon}</Text>
-      <Text style={[styles.glowLabel, { color: active ? '#fff' : T.textSub }]}>{label}</Text>
+      {svgIcon
+        ? <View style={!active ? { opacity: 0.45 } : undefined}>{svgIcon}</View>
+        : <Text style={[styles.glowIcon, !active && { opacity: 0.45 }]}>{icon}</Text>
+      }
+      {label != null && <Text style={[styles.glowLabel, { color: active ? '#fff' : T.textSub }]}>{label}</Text>}
     </TouchableOpacity>
   );
 }
@@ -166,9 +169,9 @@ export function TaskCard({ task, entry, onChange }: {
       </View>
       {task.type === 'pill' ? (
         <View style={styles.glowRow}>
-          <GlowToggle label="Morning" icon="☀" active={!!(entry as any)?.morning} color={task.color}
+          <GlowToggle label="Morning" active={!!(entry as any)?.morning} color={task.color}
             onPress={() => onChange({ ...(entry || {}), morning: !(entry as any)?.morning })} />
-          <GlowToggle label="Evening" icon="☾" active={!!(entry as any)?.evening} color={task.color}
+          <GlowToggle label="Evening" active={!!(entry as any)?.evening} color={task.color}
             onPress={() => onChange({ ...(entry || {}), evening: !(entry as any)?.evening })} />
         </View>
       ) : task.type === 'exercise' ? (
@@ -397,9 +400,9 @@ export const styles = StyleSheet.create({
 
   // Glow
   glowRow:   { flexDirection: 'row', gap: 10 },
-  glowBtn:   { flex: 1, height: 62, borderRadius: 16, borderWidth: 1, alignItems: 'center', justifyContent: 'center', gap: 4 },
+  glowBtn:   { flex: 1, height: 46, borderRadius: 12, borderWidth: 1, alignItems: 'center', justifyContent: 'center', gap: 4 },
   glowIcon:  { fontSize: 22 },
-  glowLabel: { fontSize: 14, fontWeight: '600', letterSpacing: -0.1 },
+  glowLabel: { fontSize: 15, fontWeight: '600', letterSpacing: -0.1 },
 
   // Chips
   chipRow:  { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },

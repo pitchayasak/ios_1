@@ -10,8 +10,8 @@ import {
 } from '@/context/store';
 import { PillIcon, RunIcon, MoneyIcon, DragHandle, ExerciseIconGlyph } from '@/components/tracker/icons';
 
-type ExerciseIcon = 'run' | 'bicycle' | 'sport' | 'drive';
-const EXERCISE_ICONS: ExerciseIcon[] = ['run', 'bicycle', 'sport', 'drive'];
+type ExerciseIcon = 'run' | 'bicycle' | 'play' | 'drive';
+const EXERCISE_ICONS: ExerciseIcon[] = ['run', 'bicycle', 'play', 'drive'];
 
 // ─── Reusable section wrapper ─────────────────────────────────
 function Section({ label, children }: { label: string; children: React.ReactNode }) {

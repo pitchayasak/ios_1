@@ -6,7 +6,7 @@ const STORAGE_KEY = 'daily_tracker_v2';
 // ─── Types ───────────────────────────────────────────────────
 export type TaskType = 'pill' | 'exercise' | 'transfer' | 'spend';
 export type ExerciseMode = 'duration' | 'distance';
-export type ExerciseIcon = 'run' | 'bicycle' | 'sport' | 'drive';
+export type ExerciseIcon = 'run' | 'bicycle' | 'play' | 'drive';
 export type TaskFrequency = 'daily' | 'monthly';
 
 export interface Task {
@@ -82,7 +82,7 @@ const SEED_TASKS: Task[] = [
   { id: 't1', type: 'pill',     name: 'Vitamin D',    color: '#F4B740', frequency: 'daily',   created: Date.now() },
   { id: 't2', type: 'pill',     name: 'Magnesium',    color: '#C4A7E7', frequency: 'daily',   created: Date.now() },
   { id: 't3', type: 'exercise', name: 'Morning Run',  color: '#6DD3A8', frequency: 'daily',   mode: 'distance', icon: 'run',   created: Date.now() },
-  { id: 't4', type: 'exercise', name: 'Yoga',         color: '#E57ABD', frequency: 'daily',   mode: 'duration', icon: 'sport', created: Date.now() },
+  { id: 't4', type: 'exercise', name: 'Yoga',         color: '#E57ABD', frequency: 'daily',   mode: 'duration', icon: 'play', created: Date.now() },
   { id: 't5', type: 'transfer', name: 'Savings',      color: '#5EC7E8', frequency: 'monthly', created: Date.now() },
   { id: 't6', type: 'spend',    name: 'Daily spend',  color: '#F07A5A', frequency: 'daily',   created: Date.now() },
   { id: 't7', type: 'spend',    name: 'Monthly budget', color: '#8A8CD9', frequency: 'monthly', created: Date.now() },
