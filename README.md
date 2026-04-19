@@ -1,50 +1,108 @@
-# Welcome to your Expo app 👋
+# My Daily Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A minimalistic dark-mode iOS daily habit tracker built with **Expo** + **React Native** + **TypeScript**.
 
-## Get started
+Track pills, exercise, money transfers, and spending — all in one place. History is saved locally on the device using AsyncStorage.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Features
 
-2. Start the app
+- **Home** — View and log today's tasks. Navigate to any past day using the calendar picker or the previous/next arrows.
+- **History** — GitHub-style contribution grid showing the last 18 weeks per task. Tap a task name to open a full-year view with a year picker (up to 5 years back).
+- **Tasks** — Create, edit, delete, and drag-and-drop reorder your tasks.
+- **Settings** — Placeholder for future settings.
 
-   ```bash
-   npx expo start
-   ```
+### Task types
 
-In the output, you'll find options to open the app in a
+| Type | Interaction |
+|------|-------------|
+| **Pill** | Morning ☀ and Evening ☾ glow toggle buttons |
+| **Exercise** | Chip buttons for duration (15–60 min) or distance (500 m–2 km); choose an icon: run / bicycle / sport / drive |
+| **Money Transfer** | Preset buttons: ฿7,500 or ฿20,000 |
+| **Money Spend** | Free-entry decimal input (up to ฿999,999.99) |
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Data
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- All data is stored locally with **AsyncStorage** — no account or network required.
+- The app seeds 90 days of sample history on first launch so the History tab has data to display immediately.
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## Tech stack
+
+| | |
+|-|---|
+| Framework | [Expo](https://expo.dev) SDK 54 (managed workflow) |
+| Language | TypeScript (strict) |
+| Navigation | [Expo Router](https://expo.dev/router) v6 (file-based) |
+| State | React Context + AsyncStorage |
+| Icons | [react-native-svg](https://github.com/software-mansion/react-native-svg) (custom drawn) |
+| Drag & drop | [react-native-draggable-flatlist](https://github.com/computerjazz/react-native-draggable-flatlist) |
+| Gestures | react-native-gesture-handler + react-native-reanimated |
+
+---
+
+## Getting started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) 18+
+- [Expo CLI](https://docs.expo.dev/more/expo-cli/) (`npm install -g expo-cli`) or use `npx`
+- For iOS: Xcode + iOS Simulator **or** the [Expo Go](https://expo.dev/go) app on a physical device
+- For Android: Android Studio + emulator **or** Expo Go on a physical device
+
+### Install dependencies
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Start the development server
 
-## Learn more
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Then press one of the following in the terminal:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+| Key | Action |
+|-----|--------|
+| `i` | Open in iOS Simulator |
+| `a` | Open in Android emulator |
+| `s` | Switch to Expo Go (scan QR with the Expo Go app) |
+| `w` | Open in web browser |
 
-## Join the community
+### Run on a physical device
 
-Join our community of developers creating universal apps.
+1. Install **Expo Go** from the App Store or Google Play.
+2. Run `npx expo start`.
+3. Scan the QR code shown in the terminal with your camera (iOS) or the Expo Go app (Android).
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## Project structure
+
+```
+app/
+  _layout.tsx              # Root layout — wraps app in StoreProvider + GestureHandler
+  (tabs)/
+    _layout.tsx            # Bottom tab bar with custom SVG icons
+    index.tsx              # Home screen
+    history.tsx            # History screen
+    tasks.tsx              # Tasks screen (CRUD + drag-and-drop)
+    settings.tsx           # Settings screen (placeholder)
+
+components/
+  tracker/
+    icons.tsx              # All custom SVG icons (PillIcon, RunIcon, MoneyIcon, etc.)
+
+context/
+  store.tsx                # Global state, AsyncStorage persistence, date helpers, types
+```
+
+---
+
+## Resetting app data
+
+To wipe all stored data and start fresh, clear the app's storage from your device settings, or uninstall and reinstall the app. The seed history will be regenerated on next launch.
