@@ -121,6 +121,72 @@ export function MoneyIcon({ color = '#6DD3A8', size = 36, kind = 'transfer' }: {
   );
 }
 
+// ─── Horizon (Morning) pill icon ─────────────────────────────
+export function HorizonIcon({ size = 40 }: { size?: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 40 40">
+      {/* Base sky */}
+      <Rect x="0" y="0" width="40" height="40" rx="9" fill="#5A1A12" />
+      {/* Atmospheric warmth near horizon */}
+      <Circle cx="20" cy="26" r="22" fill="rgba(210,90,15,0.38)" />
+      {/* Water */}
+      <Rect x="0" y="26" width="40" height="14" fill="#3A1008" />
+      {/* Horizon glow line */}
+      <Rect x="0" y="25" width="40" height="2" fill="rgba(255,195,80,0.55)" />
+      {/* Sun glow */}
+      <Circle cx="20" cy="26" r="13" fill="rgba(255,180,40,0.28)" />
+      {/* Sun half-circle */}
+      <Path d="M9 26 A11 11 0 0 1 31 26 Z" fill="#FFD040" />
+      {/* Sun specular highlight */}
+      <Path d="M13 23.5 A8 5 0 0 1 27 23.5 Z" fill="rgba(255,255,165,0.45)" />
+      {/* Sun pillar in water */}
+      <Rect x="18.5" y="26" width="3" height="14" fill="rgba(255,190,60,0.22)" />
+      {/* Cloud left */}
+      <Circle cx="7"  cy="13"   r="3.5" fill="rgba(255,200,160,0.22)" />
+      <Circle cx="11" cy="11.5" r="4"   fill="rgba(255,200,160,0.22)" />
+      {/* Cloud right */}
+      <Circle cx="30" cy="10"   r="3"   fill="rgba(255,200,160,0.17)" />
+      <Circle cx="34" cy="11.5" r="2.5" fill="rgba(255,200,160,0.17)" />
+    </Svg>
+  );
+}
+
+// ─── Night Sky (Evening) pill icon ───────────────────────────
+export function NightSkyIcon({ size = 40 }: { size?: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 40 40">
+      {/* Background */}
+      <Rect x="0" y="0" width="40" height="40" rx="9" fill="#0C0A24" />
+      {/* Nebula patches */}
+      <Circle cx="5"  cy="31" r="10" fill="rgba(70,30,150,0.13)" />
+      <Circle cx="35" cy="11" r="7"  fill="rgba(30,60,160,0.09)" />
+      {/* Moon halo */}
+      <Circle cx="20" cy="18" r="12" fill="rgba(200,158,28,0.13)" />
+      {/* Crescent (even-odd: moon circle minus shadow circle) */}
+      <Path
+        fillRule="evenodd"
+        d="M10 18 A10 10 0 1 0 30 18 A10 10 0 1 0 10 18 Z M15 14 A9 9 0 1 0 33 14 A9 9 0 1 0 15 14 Z"
+        fill="#EFC830"
+      />
+      {/* Lit rim highlight */}
+      <Path
+        d="M10 18 A10 10 0 0 0 20 8 A10 10 0 0 0 10 18 Z"
+        fill="rgba(255,255,200,0.22)"
+      />
+      {/* Stars */}
+      <Circle cx="6"  cy="8"  r="1.2" fill="white" fillOpacity="0.90" />
+      <Circle cx="35" cy="6"  r="0.85" fill="white" fillOpacity="0.75" />
+      <Circle cx="5"  cy="23" r="0.8" fill="white" fillOpacity="0.65" />
+      <Circle cx="37" cy="30" r="1.0" fill="white" fillOpacity="0.80" />
+      <Circle cx="11" cy="35" r="0.7" fill="white" fillOpacity="0.55" />
+      <Circle cx="34" cy="34" r="0.8" fill="white" fillOpacity="0.60" />
+      {/* 4-point sparkle on brightest star */}
+      <Path d="M6 5.5 L6.5 8 L6 10.5 L5.5 8 Z" fill="white" fillOpacity="0.90" />
+      <Path d="M3.5 8 L6 7.5 L8.5 8 L6 8.5 Z"  fill="white" fillOpacity="0.90" />
+    </Svg>
+  );
+}
+
 // ─── Drag handle ──────────────────────────────────────────────
 export function DragHandle() {
   return (
